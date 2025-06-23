@@ -55,11 +55,3 @@ src/
 └── ...
 
 
----
-
-## 참고 자료
-
-- [Next.js 공식 문서](https://nextjs.org/docs)
-- [Framer Motion](https://www.framer.com/motion/)
-- [Tailwind CSS](https://tailwindcss.com/)
-"@ | Out-File -Encoding UTF8 README.md
