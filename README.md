@@ -45,7 +45,7 @@ pnpm dev        # 개발 서버 실행 (http://localhost:3000)
 
 ##  개발 구조
 
-\`\`\`bash
+```plaintext
 src/
 ├── app/
 │   └── page.tsx       # 메인 페이지 (모션 포함)
@@ -53,7 +53,7 @@ src/
 │   └── PortfolioCards.tsx # 카드 셔플/모달 컴포넌트
 ├── styles/
 └── ...
-\`\`\`
+
 
 ---
 
