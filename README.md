@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+@"
+# 📁 Portfolio Project #1
 
-## Getting Started
+**카드 셔플 / 스크롤 인터랙션 / 레이아웃 트랜지션** 기반 인터랙티브 웹 포트폴리오입니다.  
+사용자가 상담 필터를 클릭하거나, 스크롤하거나, 카드를 클릭할 때마다 다양한 모션이 적용됩니다.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 사용 기술
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js 15 (App Router)**
+- **TypeScript**
+- **Framer Motion** (모션 애니메이션)
+- **Tailwind CSS** (스타일링)
+- **MDX 지원 가능** (필요 시)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧩 주요 기능
 
-## Learn More
+### 1. 카드 셔플
+- 상담 필터(`ALL / DESIGN / DEV`) 클릭 시
+- 해당 카테고리의 카드만 부드럽게 정렬 및 전환
 
-To learn more about Next.js, take a look at the following resources:
+### 2. 스크롤 인터랙션
+- 스크롤 위치에 따라 제목, 필터버튼이 점점 나타남
+- `Framer Motion + useScroll` 활용
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. 레이아웃 트랜지션
+- 카드 클릭 시 상세 팝업 등장
+- `layoutId` 활용하여 자연스럽게 카드 → 팝업 전환
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📦 설치 및 실행 방법
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+\`\`\`bash
+pnpm install    # 패키지 설치
+pnpm dev        # 개발 서버 실행 (http://localhost:3000)
+\`\`\`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> `npm`, `yarn`, `bun`도 사용 가능
+
+---
+
+## 🛠️ 개발 구조
+
+\`\`\`bash
+src/
+├── app/
+│   └── page.tsx       # 메인 페이지 (모션 포함)
+├── components/
+│   └── PortfolioCards.tsx # 카드 셔플/모달 컴포넌트
+├── styles/
+└── ...
+\`\`\`
+
+---
+
+## 📝 참고 자료
+
+- [Next.js 공식 문서](https://nextjs.org/docs)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Tailwind CSS](https://tailwindcss.com/)
+"@ | Out-File -Encoding UTF8 README.md
