@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 const dummyCards = [
   { id: 1, category: "design", title: "UX Case Study" },
@@ -16,6 +16,11 @@ const categories = ["all", "design", "dev"];
 export default function PortfolioPage() {
   const [filter, setFilter] = useState("all");
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0.9, 1]);
 
   const filteredCards = dummyCards.filter(
     (card) => filter === "all" || card.category === filter
@@ -23,7 +28,7 @@ export default function PortfolioPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
-      <h1 className="text-3xl font-bold text-center mb-6">My Portfolio</h1>
+      <h1 className="text-3xl font-bold text-amber-400 text-center mb-6">My Portfolio</h1>
 
       {/* Filter Buttons */}
       <div className="flex justify-center gap-4 mb-10">
@@ -57,7 +62,7 @@ export default function PortfolioPage() {
               className="p-6 bg-white rounded-xl shadow cursor-pointer hover:shadow-lg"
               onClick={() => setSelectedId(card.id)}
             >
-              <h3 className="font-semibold text-lg">{card.title}</h3>
+              <h3 className="font-semibold text-amber-300">{card.title}</h3>
               <p className="text-sm text-gray-500 mt-1">{card.category}</p>
             </motion.div>
           ))}
@@ -80,7 +85,7 @@ export default function PortfolioPage() {
               className="bg-white p-8 rounded-xl shadow-xl w-[90%] max-w-md"
               onClick={(e) => e.stopPropagation()}
             >
-              <h2 className="text-xl font-bold mb-4">
+              <h2 className="text-xl text-amber-300 font-bold mb-4">
                 {dummyCards.find((c) => c.id === selectedId)?.title}
               </h2>
               <p className="text-sm text-gray-600">
