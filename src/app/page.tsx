@@ -18,9 +18,14 @@ export default function PortfolioPage() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const containerRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.9, 1]);
+  // ✅ 스크롤 기반 애니메이션 설정
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "center start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [0.95, 1]);
 
   const filteredCards = dummyCards.filter(
     (card) => filter === "all" || card.category === filter
@@ -47,11 +52,11 @@ export default function PortfolioPage() {
 
       {/* Card Grid */}
       <motion.div
-  layout
-  ref={containerRef}
-  style={{ opacity, scale }} 
-  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
->
+        layout
+        ref={containerRef}
+        style={{ opacity, scale }}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+      >
         <AnimatePresence>
           {filteredCards.map((card) => (
             <motion.div
