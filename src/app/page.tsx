@@ -47,9 +47,11 @@ export default function PortfolioPage() {
 
       {/* Card Grid */}
       <motion.div
-        layout
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
-      >
+  layout
+  ref={containerRef}
+  style={{ opacity, scale }} 
+  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+>
         <AnimatePresence>
           {filteredCards.map((card) => (
             <motion.div
