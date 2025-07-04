@@ -32,17 +32,18 @@ export default function PortfolioPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4">
-      <h1 className="text-3xl font-bold text-amber-400 text-center mb-6">My Portfolio</h1>
+     <div className="min-h-screen bg-gradient-to-b from-amber-50 to-gray-100 py-10 px-4">
+      <h1 className="text-4xl font-bold text-center text-amber-500 mb-8 drop-shadow">
+        My Portfolio
+      </h1>
 
       {/* Filter Buttons */}
       <div className="flex justify-center gap-4 mb-10">
         {categories.map((cat) => (
           <button
             key={cat}
-            className={`px-4 py-2 rounded-full border transition-colors ${
-              filter === cat ? "bg-black text-white" : "bg-white text-black border-gray-300"
-            }`}
+            className={`px-4 py-2 rounded-full border transition-colors shadow-sm hover:shadow-md hover:scale-105 duration-150 ease-out
+              ${filter === cat ? "bg-amber-500 text-white" : "bg-white text-black border-gray-300"}`}
             onClick={() => setFilter(cat)}
           >
             {cat.toUpperCase()}
@@ -60,16 +61,18 @@ export default function PortfolioPage() {
         <AnimatePresence>
           {filteredCards.map((card) => (
             <motion.div
-              layout
+              layoutId={`card-${card.id}`}
               key={card.id}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
-              className="p-6 bg-white rounded-xl shadow cursor-pointer hover:shadow-lg"
+              className="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl cursor-pointer transform hover:scale-105"
               onClick={() => setSelectedId(card.id)}
             >
-              <h3 className="font-semibold text-amber-300">{card.title}</h3>
+              <h3 className="font-semibold text-lg text-amber-500">
+                {card.title}
+              </h3>
               <p className="text-sm text-gray-500 mt-1">{card.category}</p>
             </motion.div>
           ))}
@@ -89,14 +92,14 @@ export default function PortfolioPage() {
           >
             <motion.div
               layoutId={`card-${selectedId}`}
-              className="bg-white p-8 rounded-xl shadow-xl w-[90%] max-w-md"
+              className="bg-white p-8 rounded-2xl shadow-2xl w-[90%] max-w-md"
               onClick={(e) => e.stopPropagation()}
             >
-              <h2 className="text-xl text-amber-300 font-bold mb-4">
+              <h2 className="text-xl text-amber-500 font-bold mb-4">
                 {dummyCards.find((c) => c.id === selectedId)?.title}
               </h2>
               <p className="text-sm text-gray-600">
-                상세 설명이 여기에 들어갑니다. 카드 ID: {selectedId}
+                상세 설명. 카드 ID: {selectedId}
               </p>
             </motion.div>
           </motion.div>
